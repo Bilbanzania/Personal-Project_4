@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Websites</title>
+    <link rel="stylesheet" href="stylez.css">
+    <link rel="icon" href="media/icons8-website-32.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Exploring Modern Web Capabilities</h1>
+    </header>
+
+    <nav>
+        <button id="menu-toggle" aria-expanded="false" aria-controls="main-nav-list">
+            <span class="material-symbols-outlined" id="menu-toggle-icon">menu</span>
+            <span class="sr-only">Toggle Menu</span>
+        </button>
+        <ul id="main-nav-list">
+            <li><a href="#weather-section">Weather API</a></li>
+            <li><a href="#theme-section">Theme Customizer</a></li>
+            <li><a href="#widget-section">jQuery Widget</a></li>
+            <li><a href="#slideshow-section">Slideshow</a></li>
+            <li><a href="#about-section">About</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="weather-section" class="page-section">
+            <h2>Live Weather Report (AJAX & API Demo)</h2>
+            <div class="weather-info-container" aria-live="polite">
+                <p class="weather-status">Fetching weather data...</p>
+                <div id="weather-city" class="weather-data-point"></div>
+                <div id="weather-temp" class="weather-data-point"></div>
+                <div id="weather-conditions" class="weather-data-point"></div>
+                <div id="weather-humidity" class="weather-data-point"></div>
+            </div>
+        </section>
+
+        <section id="theme-section" class="page-section hidden">
+            <h2>Personalize Your View (Web Storage Demo)</h2>
+            <button id="theme-toggle-button" aria-pressed="false">Toggle Dark/Light Mode</button>
+            <p>Your theme preference is saved in your browser using Web Storage and will be applied on your next visit!
+                Unless you clear your browsing history :c
+            </p>
+        </section>
+
+        <section id="widget-section" class="page-section hidden">
+            <h2>Web Development Concepts (jQuery Accordion)</h2>
+            <div id="accordion">
+                <h3>Frontend Development</h3>
+                <div>
+                    <p>This is the art of creating what users see and interact with directly in their web browser. It
+                        involves HTML for structure, CSS for styling, and JavaScript for interactivity, ensuring a
+                        seamless and engaging user experience. Key frameworks like React, Angular, and Vue.js are often
+                        used.</p>
+                </div>
+                <h3>Backend Development</h3>
+                <div>
+                    <p>The powerhouse behind the scenes, backend development manages server-side logic, databases, APIs,
+                        and ensures the website functions correctly. Technologies include Node.js, Python
+                        (Django/Flask), Ruby on Rails, Java (Spring), and PHP (Laravel), along with databases like
+                        PostgreSQL, MySQL, and MongoDB.</p>
+                </div>
+                <h3>Full-Stack Development</h3>
+                <div>
+                    <p>A full-stack developer is a versatile expert proficient in both frontend and backend
+                        technologies. They can build and manage entire web applications from the user interface to the
+                        server-side infrastructure, understanding the complete development lifecycle.</p>
+                </div>
+                <h3>Web APIs (Application Programming Interfaces)</h3>
+                <div>
+                    <p>APIs are crucial for modern web development, allowing different software applications to
+                        communicate and exchange data. They enable integration of third-party services (like maps,
+                        payment gateways, or social media) and power dynamic, feature-rich websites. This weather demo
+                        itself uses an API!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="slideshow-section" class="page-section hidden">
+            <h2>Visual Showcase (JavaScript Slideshow)</h2>
+            <div class="slideshow-container">
+                <div class="slide">
+                    <img src="media/slide_1.png"
+                        alt="Abstract image representing web structure: HTML, CSS, JS logos which are all tools used in website development.">
+                    <p class="caption">Slide 1: The Building Blocks - HTML, CSS, JS</p>
+                </div>
+                <div class="slide hidden">
+                    <img src="media/slide_2.png"
+                        alt="Abstract image representing data flow through an API connection which connects different applications together.">
+                    <p class="caption">Slide 2: Dynamic Data with APIs</p>
+                </div>
+                <div class="slide hidden">
+                    <img src="media/slide_3.jpg"
+                        alt="Abstract image of interconnected nodes representing user interaction and experience.">
+                    <p class="caption">Slide 3: Interactive User Experiences</p>
+                </div>
+                <button class="prev-slide">❮ Previous</button>
+                <button class="next-slide">Next ❯</button>
+            </div>
+        </section>
+
+        <section id="about-section" class="page-section">
+            <h2>Behind the Code: About This Page</h2>
+            <p>Welcome! This single-page website began as a project for my GIT418 course at ASU and has since evolved
+                into a personal showcase of modern web development techniques. I've particularly enjoyed enhancing its
+                interactivity and ensuring a responsive experience across devices. Here's a peek at what this page
+                demonstrates:</p>
+            <ul>
+                <li>
+                    <a href="#weather-section" class="about-feature-link">
+                        <span class="material-symbols-outlined">cloud</span>
+                        <strong>Live Weather Reports:</strong> Fetching and displaying real-time data from the
+                        OpenWeatherMap API.
+                    </a>
+                </li>
+                <li>
+                    <a href="#theme-section" class="about-feature-link">
+                        <span class="material-symbols-outlined">palette</span>
+                        <strong>Theme Customization:</strong> Utilizing Web Storage to remember your theme preferences
+                        between visits.
+                    </a>
+                </li>
+                <li>
+                    <a href="#widget-section" class="about-feature-link">
+                        <span class="material-symbols-outlined">widgets</span>
+                        <strong>Interactive jQuery UI Widget:</strong> Using the accordion widget for neatly organized
+                        content.
+                    </a>
+                </li>
+                <li>
+                    <a href="#slideshow-section" class="about-feature-link">
+                        <span class="material-symbols-outlined">photo_library</span>
+                        <strong>JavaScript Slideshow:</strong> A custom-built carousel to showcase visual content.
+                    </a>
+                </li>
+            </ul>
+            <p style="margin-top: 1em;">Feel free to navigate through each section to see these features in action!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> Exploring Web Development - Mitchell Laypath</p>
+    </footer>
+
+</body>
+
+</html>
