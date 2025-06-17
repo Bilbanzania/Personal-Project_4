@@ -50,12 +50,16 @@
     --font-family-headings: 'Montserrat', sans-serif;
     --font-family-body: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
+    /* Reverted durations for visible animations */
     --transition-duration: 0.3s;
+    /* Back to 0.3s */
     --transition-duration-fast: 0.15s;
+    /* Back to 0.15s */
     --transition-timing: ease;
+    /* Back to ease */
     --transition-timing-interaction: ease-out;
+    /* Back to ease-out */
 
-    /* Wand Glow Settings */
     --wand-glow-color-core: rgba(200, 220, 255, 0.8);
     --wand-glow-color-edge: rgba(180, 150, 255, 0.7);
     --wand-glow-color-faint: rgba(220, 200, 255, 0.1);
@@ -69,13 +73,11 @@
     padding: 0;
 }
 
-/* Utility Styles */
 .hidden {
     display: none !important;
 }
 
 .sr-only {
-    /* Visually hide elements for screen reader users */
     position: absolute;
     width: 1px;
     height: 1px;
@@ -97,9 +99,11 @@ body {
     color: var(--primary-text-color);
     line-height: 1.6;
     transition: background-image var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* Header Styles */
 header {
     background-color: var(--header-bg-color);
     color: var(--header-text-color);
@@ -115,7 +119,6 @@ header h1 {
     font-size: 2.5em;
 }
 
-/* Navigation container */
 nav {
     background-color: var(--nav-bg-color);
     padding: 10px 15px;
@@ -127,7 +130,6 @@ nav {
     position: relative;
 }
 
-/* Menu toggle button (hamburger icon) */
 #menu-toggle {
     display: none;
     background: none;
@@ -144,7 +146,6 @@ nav {
     vertical-align: middle;
 }
 
-/* Navigation list (ul#main-nav-list) - Mobile First (dropdown) */
 nav ul#main-nav-list {
     list-style-type: none;
     margin: 0;
@@ -159,18 +160,15 @@ nav ul#main-nav-list {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Class added by JavaScript to show the mobile menu */
 nav ul#main-nav-list.nav-ul--open {
     display: block;
 }
 
-/* Navigation list items (li) - Mobile First */
 nav ul#main-nav-list li {
     display: block;
     text-align: left;
 }
 
-/* Navigation links (a) - Mobile First */
 nav ul#main-nav-list li a {
     text-decoration: none;
     color: var(--nav-text-color);
@@ -189,12 +187,11 @@ nav ul#main-nav-list li a.active {
     transform: none;
 }
 
-/* Main Content Area */
 main {
+    flex-grow: 1;
     padding: 0 20px;
 }
 
-/* Section Styles */
 .page-section {
     background-color: var(--section-bg-color);
     padding: 25px;
@@ -221,7 +218,6 @@ main {
     transition: color var(--transition-duration) var(--transition-timing), border-bottom-color var(--transition-duration) var(--transition-timing);
 }
 
-/* --- About Section Specific Styles --- */
 #about-features-list {
     list-style-type: none;
     padding-left: 0;
@@ -235,7 +231,6 @@ main {
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* Styling for list items that have become visible (animated in) */
 #about-features-list li.is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -275,7 +270,6 @@ main {
     color: var(--header-text-color);
 }
 
-/* Dark mode adjustments for the About section features list */
 body.dark-mode #about-features-list .about-feature-link {
     background-color: var(--section-bg-color);
     border-color: var(--section-border-color);
@@ -297,7 +291,6 @@ body.dark-mode #about-features-list .about-feature-link:focus .material-symbols-
     color: var(--header-text-color);
 }
 
-/* Magical Wand Glow Pseudo-element */
 .page-section::before {
     content: '';
     position: absolute;
@@ -314,13 +307,12 @@ body.dark-mode #about-features-list .about-feature-link:focus .material-symbols-
     transform: translateX(calc(-1 * var(--wand-glow-width)));
 }
 
-/* Apply Sweep animation */
 .page-section.wand-waving-in::before,
 .page-section.wand-waving-out::before {
     animation: sweepEffect 0.7s var(--transition-timing-interaction) forwards;
+    /* Reverted to 0.7s */
 }
 
-/* Set Animation Direction */
 .page-section.wand-waving-in::before {
     animation-direction: normal;
 }
@@ -329,8 +321,6 @@ body.dark-mode #about-features-list .about-feature-link:focus .material-symbols-
     animation-direction: reverse;
 }
 
-
-/* Specific Section Content Styles */
 .weather-info-container p, #theme-section p {
     margin-bottom: 10px;
 }
@@ -376,8 +366,6 @@ body.dark-mode #about-features-list .about-feature-link:focus .material-symbols-
     word-wrap: break-word;
 }
 
-
-/* Button Styles */
 #theme-toggle-button, .slideshow-container button {
     border: none;
     padding: 10px 20px;
@@ -416,8 +404,6 @@ body.dark-mode #about-features-list .about-feature-link:focus .material-symbols-
     background-color: var(--button-hover-bg-color);
 }
 
-
-/* Footer Styles */
 footer {
     background-color: var(--footer-bg-color);
     color: var(--footer-text-color);
@@ -430,8 +416,6 @@ footer {
     border-radius: 0 0 8px 8px;
 }
 
-
-/* Accordion Styles */
 #accordion {
     margin-top: 15px;
 }
@@ -461,8 +445,6 @@ footer {
     border-radius: 0 0 4px 4px;
 }
 
-
-/* Slideshow Styles */
 .slideshow-container {
     max-width: 800px;
     position: relative;
@@ -523,7 +505,6 @@ footer {
     left: 10px;
 }
 
-
 /*
 ========================================
 DARK MODE STYLES
@@ -565,7 +546,6 @@ body.dark-mode {
     --status-warning-text-color: #f39c12;
     --status-error-text-color: #e74c3c;
 
-    /* Dark mode wand glow colors */
     --wand-glow-color-core: rgba(150, 200, 255, 0.7);
     --wand-glow-color-edge: rgba(120, 180, 255, 0.6);
     --wand-glow-color-faint: rgba(100, 150, 255, 0.1);
@@ -583,11 +563,9 @@ body.dark-mode .weather-data-point {
     color: var(--primary-text-color);
 }
 
-/* Ensure menu toggle button color updates in dark mode */
 body.dark-mode #menu-toggle {
     color: var(--nav-text-color);
 }
-
 
 /*
 ========================================
@@ -595,14 +573,12 @@ ANIMATIONS: WAND WAVE TRANSITION & GLOW
 ========================================
 */
 
-/* Spinner */
 @keyframes spin {
     to {
         transform: rotate(360deg);
     }
 }
 
-/* Main content wipe (clip-path) */
 @keyframes wandWaveOut {
     0% {
         clip-path: inset(0 0 0 0);
@@ -627,7 +603,6 @@ ANIMATIONS: WAND WAVE TRANSITION & GLOW
     }
 }
 
-/* Keyframe for the Wand Glow sweep */
 @keyframes sweepEffect {
     0% {
         transform: translateX(calc(-1 * var(--wand-glow-width)));
@@ -644,7 +619,6 @@ ANIMATIONS: WAND WAVE TRANSITION & GLOW
     }
 }
 
-/* Fallback fadeIn animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -655,7 +629,6 @@ ANIMATIONS: WAND WAVE TRANSITION & GLOW
     }
 }
 
-/* Apply main content animation */
 .page-section.wand-waving-out {
     animation: wandWaveOut 0.7s var(--transition-timing-interaction) forwards;
 }
@@ -696,7 +669,6 @@ RESPONSIVE STYLES
 ========================================
 */
 
-/* Mobile specific styles (up to 768px) */
 @media (max-width: 768px) {
     body {
         padding: 15px 0;
@@ -715,6 +687,21 @@ RESPONSIVE STYLES
         display: block;
     }
 
+    nav ul#main-nav-list {
+        /* This transition needs to be specific for the slide-down effect */
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        transform: translateY(-100%);
+        /* Start off-screen */
+        opacity: 0;
+    }
+
+    nav ul#main-nav-list.nav-ul--open {
+        transform: translateY(0%);
+        /* Slide into view */
+        opacity: 1;
+    }
+
+
     main {
         padding: 0 15px;
     }
@@ -732,7 +719,6 @@ RESPONSIVE STYLES
     }
 }
 
-/* Desktop specific styles (769px and above) */
 @media (min-width: 769px) {
     nav {
         display: block;
@@ -751,6 +737,10 @@ RESPONSIVE STYLES
         box-shadow: none;
         padding: 0;
         width: auto;
+        /* Reset mobile transitions */
+        transition: none;
+        transform: none;
+        opacity: 1;
     }
 
     nav ul#main-nav-list.nav-ul--open {
@@ -778,7 +768,6 @@ RESPONSIVE STYLES
 }
 
 
-/* Smaller mobile device adjustments (up to 480px) */
 @media (max-width: 480px) {
     body {
         padding: 10px 0;
