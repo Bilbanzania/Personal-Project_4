@@ -2,6 +2,9 @@
 
 $(document).ready(function () {
 
+    //
+    // Constants & Global Variables
+    //
     const WEATHER_CACHE_KEY = 'userWeatherCache';
     const WEATHER_CACHE_DURATION = 30 * 60 * 1000;
     const THEME_STORAGE_KEY = 'sitePreferredTheme';
@@ -19,7 +22,6 @@ $(document).ready(function () {
     const $weatherTemp = $('#weather-temp');
     const $weatherConditions = $('#weather-conditions');
     const $weatherHumidity = $('#weather-humidity');
-
     const $menuToggleButton = $('#menu-toggle');
     const $menuToggleIcon = $('#menu-toggle-icon');
     const $mainNavList = $('#main-nav-list');
@@ -27,6 +29,9 @@ $(document).ready(function () {
     let $currentVisibleSection = null;
     let isTransitioning = false;
 
+    //
+    // Accordion & Animations
+    //
     function initializeAccordionIfNeeded() {
         if ($('#widget-section').is(':visible') && $accordionElement.length && !$accordionElement.hasClass('ui-accordion')) {
             $accordionElement.accordion({
@@ -50,6 +55,9 @@ $(document).ready(function () {
         }
     }
 
+    //
+    // Section Navigation & Display
+    //
     function handleSectionDisplayCompletion(targetSectionId) {
         initializeAccordionIfNeeded();
         if (targetSectionId === '#weather-section') {
@@ -107,6 +115,9 @@ $(document).ready(function () {
         }
     }
 
+    //
+    // Theme Management
+    //
     function applyTheme(theme) {
         const sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="theme-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></svg>';
         const moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="theme-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"/></svg>';
@@ -124,6 +135,9 @@ $(document).ready(function () {
         localStorage.setItem(THEME_STORAGE_KEY, theme);
     }
 
+    //
+    // Initial Page Load
+    //
     const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || 'light';
     applyTheme(savedTheme);
 
@@ -136,6 +150,9 @@ $(document).ready(function () {
         });
     }
 
+    //
+    // Mobile Menu
+    //
     if ($menuToggleButton.length && $mainNavList.length) {
         $menuToggleButton.on('click', function () {
             const isExpanded = $(this).attr('aria-expanded') === 'true';
@@ -181,11 +198,14 @@ $(document).ready(function () {
 
     }
 
+    //
+    // Slideshow
+    //
     let currentSlideIndex = 0;
     function showSlide(index) {
         if (!$slides.length) return;
         $slides.addClass('hidden');
-        $($slides.get(index)).removeClass('hidden').hide().fadeIn(500); // Reverted to 500ms fade-in
+        $($slides.get(index)).removeClass('hidden').hide().fadeIn(500);
         currentSlideIndex = index;
     }
 
@@ -217,6 +237,9 @@ $(document).ready(function () {
         }
     }
 
+    //
+    // Navigation Link Handling
+    //
     let initialSectionToShow = window.location.hash ? window.location.hash : null;
     if (!initialSectionToShow || !$(initialSectionToShow).length || !$(initialSectionToShow).hasClass('page-section')) {
         const firstNavHref = $mainNavList.find('a').first().attr('href');
@@ -288,10 +311,16 @@ $(document).ready(function () {
         }
     });
 
+    //
+    // Footer
+    //
     if ($yearSpan.length) {
         $yearSpan.text(new Date().getFullYear());
     }
 
+    //
+    // Weather API Logic
+    //
     function updateWeatherStatus(message, type = 'info') {
         $weatherStatusMessage.removeClass('warning error');
         if (type === 'loading') {
@@ -318,12 +347,37 @@ $(document).ready(function () {
         let humidity = data.main ? data.main.humidity : (data.humidity !== undefined ? data.humidity : 'N/A');
         $weatherCity.text(cityName + (country ? `, ${country}` : ''));
         $weatherTemp.text(`Temperature: ${temp}°F`);
+
         const iconBasePath = 'media/weather_icons/';
-        let selectedIconFilename = 'cloudy.svg';
-        const iconFileMap = { 'clear_day': 'Clear_Day.svg', 'clear_night': 'Clear_Night.svg', 'clouds': 'Cloudy.svg', 'rain': 'Rain.svg', 'drizzle': 'Rain.svg', 'snow': 'Snowing.svg', 'thunderstorm': 'Storming.svg', 'atmosphere': 'Cloudy.svg' };
-        if (conditionMain === 'clear') { selectedIconFilename = (apiIconCode && apiIconCode.includes('n')) ? iconFileMap.clear_night : iconFileMap.clear_day; }
-        else if (iconFileMap[conditionMain]) { selectedIconFilename = iconFileMap[conditionMain]; }
-        else if (['mist', 'smoke', 'haze', 'dust', 'fog', 'sand', 'ash', 'squall', 'tornado'].includes(conditionMain)) { selectedIconFilename = iconFileMap.atmosphere; }
+        let selectedIconFilename = 'Cloudy.svg'; // Default icon
+        const iconFileMap = {
+            'clear_day': 'Clear_Day.svg',
+            'clear_night': 'Clear_Night.svg',
+            'clouds': 'Cloudy.svg',
+            'rain': 'Rain.svg',
+            'drizzle': 'Rain.svg',
+            'snow': 'Snowing.svg',
+            'thunderstorm': 'Thunder.svg',
+            'fog': 'Fog.svg',
+            'mist': 'Fog.svg',
+            'smoke': 'Dust_Storm.svg',
+            'haze': 'Dust_Storm.svg',
+            'dust': 'Dust_Storm.svg',
+            'sand': 'Dust_Storm.svg',
+            'ash': 'Volcanic_Ash.svg',
+            'squall': 'Storming.svg',
+            'tornado': 'Tornado.svg',
+            'atmosphere': 'Cloudy.svg'
+        };
+
+        if (conditionMain === 'clear') {
+            selectedIconFilename = (apiIconCode && apiIconCode.includes('n')) ? iconFileMap.clear_night : iconFileMap.clear_day;
+        } else if (iconFileMap[conditionMain]) {
+            selectedIconFilename = iconFileMap[conditionMain];
+        } else {
+            selectedIconFilename = iconFileMap.atmosphere; // Fallback
+        }
+
         $weatherConditions.empty();
         $('<img>', { src: iconBasePath + selectedIconFilename, alt: conditionsDesc, class: 'weather-condition-icon' }).appendTo($weatherConditions);
         const displayConditionText = conditionsDesc.charAt(0).toUpperCase() + conditionsDesc.slice(1);
