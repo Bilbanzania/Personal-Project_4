@@ -320,7 +320,7 @@ $(document).ready(function () {
         $weatherTemp.text(`Temperature: ${temp}°F`);
         const iconBasePath = 'media/weather_icons/';
         let selectedIconFilename = 'cloudy.svg';
-        const iconFileMap = { 'clear_day': 'Clear_Day.svg', 'clear_night': 'Clear_Night.svg', 'clouds': 'cloudy.svg', 'rain': 'Rain.svg', 'drizzle': 'Rain.svg', 'snow': 'Snowing.svg', 'thunderstorm': 'Storming.svg', 'atmosphere': 'Cloudy.svg' };
+        const iconFileMap = { 'clear_day': 'Clear_Day.svg', 'clear_night': 'Clear_Night.svg', 'clouds': 'Cloudy.svg', 'rain': 'Rain.svg', 'drizzle': 'Rain.svg', 'snow': 'Snowing.svg', 'thunderstorm': 'Storming.svg', 'atmosphere': 'Cloudy.svg' };
         if (conditionMain === 'clear') { selectedIconFilename = (apiIconCode && apiIconCode.includes('n')) ? iconFileMap.clear_night : iconFileMap.clear_day; }
         else if (iconFileMap[conditionMain]) { selectedIconFilename = iconFileMap[conditionMain]; }
         else if (['mist', 'smoke', 'haze', 'dust', 'fog', 'sand', 'ash', 'squall', 'tornado'].includes(conditionMain)) { selectedIconFilename = iconFileMap.atmosphere; }
